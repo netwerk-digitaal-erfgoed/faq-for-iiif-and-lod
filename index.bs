@@ -11,6 +11,70 @@ Abstract: A short description of your spec, one or two sentences.
 Introduction {#intro}
 =====================
 
-Introduction here.
+## What is IIIF?
 
-Test build: d929bb9
+IIIF stands for *International Image Interoperability Framework* and is pronounced as "triple-eye-eff". The framework was established by an international coalition of cultural heritage institutions in 2011, led by Stanford University Libraries and supported by the Andrew J. Mellon Foundation. In 2015 a consortium was formed of 11 institutions including the British Library, La Bibliothèque nationale de France and the Bavarian State Library, which has since increased to 63 members worldwide. Dutch members include Leiden University Libraries and the National Library of the Netherlands. The IIIF Community actively maintains the standards, shares best practices and discusses expansions in various groups, committees and at an annual conference.
+
+IIIF grew out of frustrations about the lack of interoperability between the various interfaces used for the public presentation of digital collections. Each institution maintained its own software and had developed individual ways to connect backend to frontend. This situation made it difficult to share codebases and gear user experiences to one another. It also preserved the need for duplicate infrastructures for thematic portals that highlight objects from multiple collections.
+
+IIIF addresses this situation by standardizing access to image data (IIIF Image API) and metadata (IIIF Presentation API). Depending on the implementation level, the **Image API** supports requests for specific parts, sizes and orientations of images based on a URL scheme. This can be compared to tiled web maps that split up large raster maps into small square tiles at various zoom levels. Viewers can request only those tiles needed for the current viewport and zoom level, and do not need to load the complete high resolution image. Different from maps, the coordinate system of IIIF is based on the original pixel dimensions of the image.
+
+\[Visualisation of tile pyramid]
+
+While the Image API provides access to individual images, it does not describe the relationship between groups of images, such as the individual images that make up the pages of a book. For this the **Presentation API** is used, which offers a JSON-LD representation of a collection or a compound object. This can be compared to the structure of a PDF, which can include multiple pages with different objects and layers, a table of contents and annotations. The complete re
+
+\[Visualisatie manifest]
+
+IIIF does not prescribe any particular software, but determines how different pieces of software  communicate with each other. If this communication is standardized across institutions, the same viewer software can be used for displaying different types of digitized media. 
+You compared the IIIF Presentation API to a PDF; what makes IIIF better?
+
+## Why do I need IIIF?
+
+Standaardisatie voor eigen infrastructuur
+
+Delen voor hergebruik
+
+## Which viewers can I use once I have implemented IIIF?
+
+- Mirador
+- Universal Viewer
+- Fromthepage
+- Allmaps
+- Manifest Editor
+- ...
+
+## What do I need to ask my supplier in order to implement IIIF?
+
+## How does IIIF relate to Linked Data?
+
+IIIF itself is a form of Linked Data, as it 
+Andere representatie van hetzelfde object
+Manifesten kunnen automatisch worden gegenereerd op
+
+Consortium Presentation API noodzakelijk acht voor Linked data purposes, soort wrapper waarmee je het object naar buiten presenteert
+
+## What is the relationship between the Image API and the Presentation API?
+
+Image API info.json is embedded in the IIIF Presentation API
+Wat de Image API níet kan, en waarom het beter is om óók de presentation API te implementeren
+
+## Why is there no semantic metadata in a IIIF manifest?
+
+label/value geen semantische data, values als html
+Doel is presentation en daarom metadata 'voorbereid' om direct te tonen
+'Semantic should not be inferred'
+
+## Can I use IIIF to offer full-text search?
+
+Yes, using the Content search API
+
+## Is it possible to reference semantic metadata in a IIIF Manifest?
+
+Yes, by using the seeAlso property
+
+We would like to implement IIIF but are concerned about copyright, what to do?
+
+The implementation of IIIF 
+Authentication API
+
+## How can I test and validate my IIIF?
