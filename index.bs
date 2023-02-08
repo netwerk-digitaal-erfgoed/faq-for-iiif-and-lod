@@ -2,7 +2,7 @@
 Title: FAQ for IIIF and Linked (Open) Data
 Shortname: faq-for-iiif-and-lod
 Level: 1
-Status: Draft
+Status: LD
 URL: https://github.com/netwerk-digitaal-erfgoed/faq-for-iiif-and-lod/
 Editor: 
     Jules Schoonman, Delft Universit of Technology, j.a.schoonman@tudelft.nl
