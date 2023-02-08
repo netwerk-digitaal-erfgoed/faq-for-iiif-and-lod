@@ -1,11 +1,13 @@
 <pre class='metadata'>
-Title: Your Spec Title
-Shortname: your-spec
+Title: FAQ for IIIF and Linked (Open) Data
+Shortname: faq-for-iiif-and-lod
 Level: 1
-Status: LS
-URL: http://example.com/url-this-spec-will-live-at
-Editor: Your Name, Your Company http://example.com/your-company, your-email@example.com, http://example.com/your-personal-website
-Abstract: A short description of your spec, one or two sentences.
+Status: Draft
+URL: https://github.com/netwerk-digitaal-erfgoed/faq-for-iiif-and-lod/
+Editor: 
+    Jules Schoonman, Delft Universit of Technology, j.a.schoonman@tudelft.nl
+    Bob Coret, Netwerk Digitaal Erfgoed https://netwerkdigitaalerfgoed.nl, bob.coret@netwerkdigitaalerfgoed.nl
+Abstract: This document lists frequently asked questions about IIIF and Linked (Open) Data with answers. 
 </pre>
 
 Introduction {#intro}
