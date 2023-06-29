@@ -1,6 +1,7 @@
 <pre class='metadata'>
 Title: FAQ for IIIF and Linked (Open) Data
 Shortname: faq-for-iiif-and-lod
+Markup Shorthands: css yes, markdown yes
 Level: 1
 Status: LD
 URL: https://github.com/netwerk-digitaal-erfgoed/faq-for-iiif-and-lod/
