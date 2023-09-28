@@ -45,7 +45,7 @@ A IIIF manifest is a JSON-LD document that describes the structure and metadata 
 
 
 * The **manifest** is the top-level object that represents the digital resource as a whole. It contains general metadata about the resource (e.g., title, description, rights, etc.) and references to the various components that make up its structure, such as sequences, canvases, and ranges.
-<img src="iiif-presentation-api-datamodel.png" align="right" style="width:50%">
+  <img src="iiif-presentation-api-datamodel.png" align="right" style="width:50%">
 * A **sequence** represents a specific ordering of the digital object's components, typically corresponding to the order in which they should be displayed or navigated. A manifest may contain multiple sequences, but usually has at least one default sequence. Each sequence contains a list of canvases.
 * A **canvas** is a virtual space on which digital objects (such as images) are placed. Canvases have dimensions (width and height) and serve as a coordinate system for positioning and scaling digital objects. In the case of a book, for example, each page would typically be represented by a separate canvas.
 * **Content resources** are the digital objects (e.g., images, audio, video) that are associated with canvases. They are typically positioned and scaled on a canvas using the "painting" mechanism, which involves an annotation that specifies the resource's location and size on the canvas.
