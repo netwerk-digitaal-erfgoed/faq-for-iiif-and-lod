@@ -7,7 +7,7 @@ Status: LD
 URL: https://github.com/netwerk-digitaal-erfgoed/faq-for-iiif-and-lod/
 Editor: 
     Jules Schoonman, Delft University of Technology, j.a.schoonman@tudelft.nl
-    Bob Coret, KB, national library, bob.coret@kb.nl
+    Bob Coret, KB - national library, bob.coret@kb.nl
 Abstract: This document lists frequently asked questions about IIIF and Linked (Open) Data with answers. 
 </pre>
 
