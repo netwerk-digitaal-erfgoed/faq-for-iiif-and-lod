@@ -43,7 +43,7 @@ While Linked Data often refers to standardized machine readable representations 
 
 A IIIF manifest is a JSON-LD document that describes the structure and metadata of a digital object or collection of objects, such as images, audio, or video. It is based on the IIIF Presentation API and comprises several key components, including pages, canvases, table of contents (ranges), and annotations. Here's an overview of how these components fit together in a typical IIIF manifest:
 
-<img src="iiif-presentation-api-datamodel.png" align="right" style="width:50%">
+<img src="iiif-presentation-api-datamodel.png" align="right" style="width:50%;height:auto;">
 
 * The **manifest** is the top-level object that represents the digital resource as a whole. It contains general metadata about the resource (e.g., title, description, rights, etc.) and references to the various components that make up its structure, such as sequences, canvases, and ranges.
 * A **sequence** represents a specific ordering of the digital object's components, typically corresponding to the order in which they should be displayed or navigated. A manifest may contain multiple sequences, but usually has at least one default sequence. Each sequence contains a list of canvases.
