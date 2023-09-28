@@ -7,7 +7,7 @@ Status: LD
 URL: https://github.com/netwerk-digitaal-erfgoed/faq-for-iiif-and-lod/
 Editor: 
     Jules Schoonman, Delft University of Technology, j.a.schoonman@tudelft.nl
-    Bob Coret, Netwerk Digitaal Erfgoed https://netwerkdigitaalerfgoed.nl, bob.coret@netwerkdigitaalerfgoed.nl
+    Bob Coret, KB, national library, bob.coret@kb.nl
 Abstract: This document lists frequently asked questions about IIIF and Linked (Open) Data with answers. 
 </pre>
 
@@ -40,9 +40,12 @@ While Linked Data often refers to standardized machine readable representations 
 
 ## How is a IIIF manifest structured, in terms of pages, canvas, table of contents, annotations?
 
+
 A IIIF manifest is a JSON-LD document that describes the structure and metadata of a digital object or collection of objects, such as images, audio, or video. It is based on the IIIF Presentation API and comprises several key components, including pages, canvases, table of contents (ranges), and annotations. Here's an overview of how these components fit together in a typical IIIF manifest:
 
+
 * The **manifest** is the top-level object that represents the digital resource as a whole. It contains general metadata about the resource (e.g., title, description, rights, etc.) and references to the various components that make up its structure, such as sequences, canvases, and ranges.
+<img src="iiif-presentation-api-datamodel.png" align="right" style="width:50%">
 * A **sequence** represents a specific ordering of the digital object's components, typically corresponding to the order in which they should be displayed or navigated. A manifest may contain multiple sequences, but usually has at least one default sequence. Each sequence contains a list of canvases.
 * A **canvas** is a virtual space on which digital objects (such as images) are placed. Canvases have dimensions (width and height) and serve as a coordinate system for positioning and scaling digital objects. In the case of a book, for example, each page would typically be represented by a separate canvas.
 * **Content resources** are the digital objects (e.g., images, audio, video) that are associated with canvases. They are typically positioned and scaled on a canvas using the "painting" mechanism, which involves an annotation that specifies the resource's location and size on the canvas.
@@ -211,13 +214,63 @@ Once you have implemented IIIF, there are several popular IIIF-compatible viewer
 
 Creating a IIIF manifest from your heritage metadata involves understanding your metadata, familiarizing yourself with the IIIF Presentation API, mapping the metadata to IIIF properties, creating a JSON-LD document, validating the manifest, hosting it on a web server, and integrating it with a IIIF viewer. This process enables you to leverage the benefits of IIIF for presenting and sharing your heritage metadata in a consistent and interoperable manner.
 
-## How can I reference a IIIF info.json (Image API) in my linked data? ##
+## How can I reference a IIIF info.json (Image API) in my linked data?
+## How can I reference a IIIF manifest (Presentation API) in my linked data?
 
-## How can I reference a IIIF manifest (Presentation API) in my linked data? ##
+<div class="example">
+Here's an <a href="https://training.iiif.io/europeana/edm/Europeana_and_iiif.html">example provided by Europeana</a> which incorporates IIIF info.json and Manifest references with a cultural heritage object in the EDM model:
 
-## How can I generate a IIIF info.json (Image API) for my images? ##
+  <pre highlight=xml>
 
-## How can I generate manifests for my images, collections, .. ? ##
+&lt;rdf:RDF
+	xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:doap="http://usefulinc.com/ns/doap#"
+	xmlns:edm="http://www.europeana.eu/schemas/edm/" 
+	xmlns:ore="http://www.openarchives.org/ore/terms/" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:svcs="http://rdfs.org/sioc/services#">
+	&lt;edm:ProvidedCHO rdf:about="#example_direct_Image_4_IIIFTraining">
+		&lt;dcterms:created>1970&lt;/dcterms:created>
+		&lt;dc:title xml:lang="en">Image JPG Example IIIF Record Tier 4&lt;/dc:title>
+		&lt;dc:subject rdf:resource="http://vocab.getty.edu/aat/300020103"/>
+		&lt;dc:type rdf:resource="http://vocab.getty.edu/aat/300430220"/>
+		&lt;dcterms:isPartOf>Europeana Foundation IIIF Example Records&lt;/dcterms:isPartOf>
+		&lt;dc:format>photo&lt;/dc:format>
+		&lt;edm:type>IMAGE&lt;/edm:type>
+		&lt;edm:currentLocation rdf:resource="http://www.wikidata.org/entity/Q4093"/>
+	&lt;/edm:ProvidedCHO>
+	&lt;edm:WebResource rdf:about="https://iiif.archivelab.org/iiif/img-0353/full/full/0/default.jpg">
+		&lt;dcterms:isReferencedBy rdf:resource="https://iiif-test.github.io/Jan2022/manifests/manifest.json"/>
+		&lt;svcs:has_service rdf:resource="https://iiif.archivelab.org/iiif/img-0353"/>
+		&lt;edm:rights rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+	&lt;/edm:WebResource>
+	&lt;ore:Aggregation rdf:about="#example_direct_Image_4_IIIFTraining_AGG">
+		&lt;edm:aggregatedCHO rdf:resource="#example_direct_Image_4_IIIFTraining"/>
+		&lt;edm:isShownBy rdf:resource="https://iiif.archivelab.org/iiif/img-0353/full/full/0/default.jpg"/>
+		&lt;edm:dataProvider>Europeana Foundation&lt;/edm:dataProvider>
+		&lt;edm:provider>Europeana Foundation&lt;/edm:provider>
+		&lt;edm:rights rdf:resource="http://creativecommons.org/publicdomain/mark/1.0/"/>
+	&lt;/ore:Aggregation>
+	&lt;svcs:Service rdf:about="https://iiif.archivelab.org/iiif/img-0353">
+		&lt;dcterms:conformsTo rdf:resource="http://iiif.io/api/image"/>
+		&lt;doap:implements rdf:resource="http://iiif.io/api/image/2/level2.json"/>
+	&lt;/svcs:Service>
+&lt;/rdf:RDF>
+</pre>
+</div>
+
+## How can I generate a IIIF info.json (Image API) for my images?
+
+An info.json file contains metadata and technical details about the image, such as dimensions, formats, quality, and available transformations. Creating this file is therefor coupled with the way the images are generated, pre-processed with command-line tools or dynamically by an image server. This tooling of IIIF Image API server will generate the info.json as defined by the specification.
+
+## How can I generate a IIIF Manifest?
+
+A IIIF Manifest contains, among other, a lot of descriptive metadata about the image. Usually this metadata is available within you collection (or content) management system. This means a manifest can be made up - pre-processed or dynamically - from already available data, just "reformatted" conforming to the IIIF Presentation API specification.
+
+When you have your data available in a triplestore, a SPARQL Construct in combination with [https://www.w3.org/TR/json-ld11-framing/](JSON-LD Framing) could be used to create the manifest from your linked data. A SPARQL Construct creates a graph which can represented as JSON-LD. But the contents need to be shaped to conform to the format required by the IIIF Presentation API, including the addition of the right `@context`. 
+
+This approach is nicely show-cased by Triply in the article [IIIF support in TriplyDB](https://triply.cc/blog/2023-06-iiif/) and can be generalized to other solutions.
 
 ## Which manifest editors can be used to manually create manifests?
 
@@ -243,7 +296,6 @@ When discussing IIIF implementation with a supplier, you will want to ensure tha
 * **What is the estimated cost and timeline for implementing IIIF?** Request an estimated cost and timeline for implementing IIIF, including the breakdown of costs for development, hosting, support, and maintenance.
 
 ## How does IIIF relate to Linked Data?
- 
 
 IIIF and Linked Data both aim to promote the accessibility and interoperability of digital resources across various platforms and institutions. While IIIF focuses on providing a standardized framework for delivering, navigating, and manipulating digital images, Linked Data is a more general approach to structuring and connecting information on the web. Despite their different scopes, IIIF and Linked Data share some common principles and are related in several ways:
 
@@ -316,10 +368,10 @@ Here's an example of how to include a "seeAlso" property in a IIIF Manifest:
 
 Implementing IIIF can raise copyright concerns, as making digital content accessible to a wider audience may involve displaying copyrighted materials. To address these concerns, you can take several steps - organizational and technical - to ensure you are respecting copyright and other intellectual property rights while implementing IIIF:
 
-1. **Understand the copyright status of your conten**t: Determine the copyright status of the materials you plan to make available via IIIF. This may involve researching the creators, publication dates, and any existing licenses or agreements. Remember that copyright laws and terms can vary by country, so it's essential to be aware of the regulations that apply to your specific location and collections.
+1. **Understand the copyright status of your content**: Determine the copyright status of the materials you plan to make available via IIIF. This may involve researching the creators, publication dates, and any existing licenses or agreements. Remember that copyright laws and terms can vary by country, so it's essential to be aware of the regulations that apply to your specific location and collections.
 2. **Obtain permissions when necessary**: If you identify copyrighted materials within your collections, seek permission from the copyright holders to display and share the content via IIIF. This may involve reaching out to individual creators, publishers, or rights management organizations.
 3. **Use access controls**: Implement access control mechanisms to limit access to copyrighted materials, if necessary. IIIF supports access control through the IIIF Authentication API, which allows you to define access restrictions based on user authentication and authorization. This way, you can limit access to copyrighted content to specific user groups or individuals, ensuring that only authorized users can view the restricted materials.
-4. **Apply appropriate licenses and rights statement**s: Clearly communicate the copyright status, usage restrictions, and licensing information for your digital content. You can include rights statements and licensing information in your IIIF Manifest using the "rights" property or the "metadata" section. This helps users understand how they can use and share the materials legally and responsibly.
+4. **Apply appropriate licenses and rights statements**: Clearly communicate the copyright status, usage restrictions, and licensing information for your digital content. You can include rights statements and licensing information in your IIIF Manifest using the "rights" property or the "metadata" section. This helps users understand how they can use and share the materials legally and responsibly.
 5. **Use a IIIF viewer that respects copyright restrictions**: Choose a IIIF viewer that supports access control mechanisms and displays rights statements and licensing information to users. This ensures that users are aware of the copyright status of the content and any restrictions on its use.
 
 ## How can machines discover my IIIF manifests?
@@ -336,7 +388,6 @@ Machines can discover IIIF manifests through several methods, which often involv
     </head>
     </xmp>
 </div>
-
 
 * **Expose manifest links in sitemaps**: If you have a sitemap for your website, you can include URLs of IIIF manifests in the sitemap. This allows search engines and other machines to discover the manifests when they crawl your website. 
 * **Publish manifests in Linked Data**: If you use Linked Data to describe your digital objects and their relationships, you can include references to IIIF manifests in your RDF statements. This allows machines to discover the manifests when they consume your Linked Data. For example, you can use the dcterms:hasFormat property to link a digital object's URI to its IIIF manifest:
