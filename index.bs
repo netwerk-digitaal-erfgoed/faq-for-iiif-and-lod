@@ -11,15 +11,15 @@ Editor:
 Abstract: This document lists frequently asked questions about IIIF and Linked (Open) Data with answers. 
 </pre>
 
-# NDE FAQ for Linked Data & IIIF
-
 # General
+
 ## What is IIIF?
 IIIF stands for **International Image Interoperability Framework** and is pronounced as "triple-eye-eff". The framework was established in 2011 by an international coalition of cultural heritage institutions, led by Stanford University Libraries and supported by the Andrew J. Mellon Foundation. In 2015 the [IIIF Consortium](https://iiif.io/community/consortium/) was formed of 11 institutions including the British Library, La Bibliothèque nationale de France and the Bavarian State Library, which has since increased to 63 members worldwide. Dutch members include Leiden University Libraries and the National Library of the Netherlands. The [IIIF Community](https://iiif.io/community/) actively maintains the standards, shares best practices, and discusses expansions in various groups, committees and at an annual conference.
 
 IIIF has been developed in response to the lack of interoperability between the various interfaces used for the public presentation of digital collections. Institutions have often implemented custom solutions to connect backend to frontend, and have developed their own software for displaying digital objects. Think for example of the different search interfaces and viewers used among cultural heritage institutions. This status quo made it difficult to share codebases, gear user experiences to one another and to promote reuse of digital collections on other (thematic or aggregate) platforms. IIIF addresses this situation by standardizing access to image data (with the [IIIF Image API](https://iiif.io/api/image/3.0/)) and metadata (with the [IIIF Presentation API](https://iiif.io/api/presentation/3.0/)). In this document we’ll be referencing the latest stable versions of both API’s: version 3.0.
 
 IIIF does not prescribe any particular software, but determines how different pieces of software  communicate with each other. If this communication is standardized across institutions, custom implementations can be shared and further developed collectively. When the APIs are advertised as a public service, they can be used by individual users to open and edit objects in alternative tools or viewers; by aggregate platforms to thematically collect and present objects across collections, or by developers to build specialized software for certain types of objects such as manuscripts or maps.
+
 ## What is the difference between IIIF and PDFs?
 Dit kan eventueel verplaatst worden naar What is the relationship between the IIIF Image and Presentation APIs?
 
@@ -37,17 +37,17 @@ Vergelijkingen met PDFs kunnen eventueel weg.
 IIIF is a set of standards and APIs designed to provide a consistent and interoperable way of delivering, navigating, and manipulating digital images across different platforms and institutions. Implementing IIIF offers several benefits, listed below, that can enhance the accessibility, usability, and discoverability of your digital collections. In relation to the previous question, key advantages of using IIIF over PDFs are added in italics.
 
 - **Interoperability**: IIIF allows for seamless integration of digital images and their associated metadata from different sources, enabling users to access and compare materials from various collections without having to learn different interfaces or deal with incompatible technologies.
- *In contrast, PDFs are self-contained documents that do not readily allow for easy integration or comparison with other resources.*
+  *In contrast, PDFs are self-contained documents that do not readily allow for easy integration or comparison with other resources.*
 - **Customizable user experience**: IIIF-compatible viewers, like Mirador or Universal Viewer, offer a range of features such as deep zoom, pan, rotation, annotation, side-by-side comparison, and more. These features allow users to interact with digital images in ways that suit their specific needs and research interests.
- *PDF viewers typically provide a more limited set of interactions, which may not be suited to all use cases, especially when working with high-resolution images or complex visual materials.*
+  *PDF viewers typically provide a more limited set of interactions, which may not be suited to all use cases, especially when working with high-resolution images or complex visual materials.*
 - **Dynamic image delivery**: IIIF uses tiled image delivery and supports the on-the-fly generation of image derivatives (e.g., different sizes, formats, and rotations) via the IIIF Image API. This enables efficient and responsive delivery of high-resolution images without overwhelming network bandwidth or system resources. 
- *PDFs, on the other hand, are static documents that may require significant resources to download and display large or high-resolution images.*
+  *PDFs, on the other hand, are static documents that may require significant resources to download and display large or high-resolution images.*
 - **Accessibility**: By providing a standardized framework for digital images and their associated metadata, IIIF makes it easier to create accessible interfaces and applications that meet the needs of users with disabilities, ensuring that your digital collections are available to the widest possible audience.
- *PDF accessibility can be more challenging to achieve, as it depends on the proper implementation of accessibility features within the PDF itself and the capabilities of the PDF viewer.*
+  *PDF accessibility can be more challenging to achieve, as it depends on the proper implementation of accessibility features within the PDF itself and the capabilities of the PDF viewer.*
 - **Linked Data integration**: IIIF manifests, which are JSON-LD documents, can include rich metadata about digital objects and link to external resources, such as semantic metadata or annotation lists. This facilitates the integration of your image collections with other Linked Data resources on the web, promoting greater discoverability and reuse. 
- *PDFs do not natively support Linked Data and generally have more limited metadata capabilities.*
+  *PDFs do not natively support Linked Data and generally have more limited metadata capabilities.*
 - **Open standards and community-driven development**: IIIF is an open, community-driven initiative with widespread adoption among cultural heritage institutions, libraries, archives, and other organizations. This ensures that the framework remains up-to-date, evolves to address new use cases, and benefits from the collective expertise and resources of its community. 
- *PDF, while also an open standard maintained by the International Organization for Standardization (ISO), is primarily driven by a single organization (Adobe) and may not address the specific needs of the digital cultural heritage community to the same extent.*
+  *PDF, while also an open standard maintained by the International Organization for Standardization (ISO), is primarily driven by a single organization (Adobe) and may not address the specific needs of the digital cultural heritage community to the same extent.*
 - **Collaboration and sharing**: IIIF's standardized APIs and data models enable institutions to share digital images and metadata more easily, fostering collaboration, resource sharing, and joint initiatives between organizations.
 - **Future-proofing**: Adopting IIIF ensures that your digital collections adhere to widely-accepted community standards, increasing the likelihood that your resources will remain accessible, usable, and compatible with future technologies and platforms.
 
@@ -59,7 +59,9 @@ A Data Platform has functions for retrieving information from a Management Platf
 A Data Platform falls under the responsibility of a source holder. A Data Platform can stand alone in the technical realization or form a whole with a Management Platform. Examples of systems that realize (part of) a Data Platform are a triplestore and a IIIF Image Server.
 
 The application interfaces of the Data Platform, including IIIF, are covered by the agreements in DERA. These interfaces are part of jointly increasing the findability of heritage information.
+
 # Application Programming Interfaces (APIs)
+
 ## What is the relationship between the IIIF Image and Presentation APIs?
 The Image API and Presentation API, two of the most central components within IIIF, work together to create a seamless viewing experience. The Presentation API provides the context and structure for the images, while the Image API handles the delivery and manipulation of image content. In a typical IIIF viewer, the Presentation API manifest is loaded first, and the viewer uses the information contained in the manifest to request the appropriate images from the Image API.
 
@@ -76,6 +78,7 @@ TODO
 
 ## Can I include other representations than IIIF Images in a IIIF Manifest?
 Yes, representations which can be included in a IIIF Manifest include IIIF images, audio, and video, as well as non-IIIF 3D and PDF. Beware that viewers might not have the ability to show all representations.
+
 ## What is the structure of a IIIF manifest?
 A IIIF manifest is a JSON-LD document that describes the structure and metadata of a digital object or collection of objects, such as images, audio, or video. It is based on the IIIF Presentation API and comprises several key components, including pages, canvases, table of contents (ranges), and annotations. Here's an overview of how these components fit together in a typical IIIF manifest:
 - **Manifest**: The manifest is the top-level object that represents the digital resource as a whole. It contains general metadata about the resource (e.g., title, description, rights, etc.) and references to the various components that make up its structure, such as sequences, canvases, and ranges.
@@ -159,6 +162,7 @@ Here's a simple example of an IIIF manifest in JSON-LD format. This example repr
   "behavior": ["paged"]
 }
 ```
+
 ## How can I annotate IIIF resources?
 TODO 
 
@@ -183,10 +187,10 @@ Here is an overview of the main components of a typical info.json file:
 - **protocol**: Indicates that the image service follows the IIIF Image API protocol.
 - **width** and **height**: The dimensions of the full-sized image in pixels.
 - **tiles**: An array containing tile size and scale factors supported by the image service. Each entry includes:
--- **width** and/or **height**: The dimensions of the image tiles in pixels. Typically, just one dimension (usually width) is provided, and the other dimension is calculated based on the aspect ratio of the image.
--- **scaleFactors**: An array of scale factors at which the image can be requested. These values represent the available levels of zoom, where 1 corresponds to the full-sized image.
--- **sizes**: An optional array of alternative sizes at which the image is available. Each entry includes width and height in pixels.
--- **profile**: An array that includes the compliance level of the IIIF Image API server and an object containing additional features supported by the server. The compliance level is represented as a URI, and the object can include properties such as formats, qualities, and supports to indicate the available image formats, quality levels, and transformation features, respectively.
+  - **width** and/or **height**: The dimensions of the image tiles in pixels. Typically, just one dimension (usually width) is provided, and the other dimension is calculated based on the aspect ratio of the image.
+  - **scaleFactors**: An array of scale factors at which the image can be requested. These values represent the available levels of zoom, where 1 corresponds to the full-sized image.
+  - **sizes**: An optional array of alternative sizes at which the image is available. Each entry includes width and height in pixels.
+  - **profile**: An array that includes the compliance level of the IIIF Image API server and an object containing additional features supported by the server. The compliance level is represented as a URI, and the object can include properties such as formats, qualities, and supports to indicate the available image formats, quality levels, and transformation features, respectively.
 
 Here's an example of a simple info.json file:
 
@@ -225,7 +229,9 @@ To implement full-text search using IIIF, you will need to do the following:
 2. **Create a search service**: Develop a search service that indexes your textual annotations and provides an API for querying the index. This service should implement the IIIF Content Search API specification, which defines the request and response formats for searching within annotations.
 3. **Link the search service to your IIIF manifest**: In your IIIF Presentation API manifest, include a reference to your search service using the "service" property on the appropriate level (manifest, sequence, or canvas). This will allow IIIF viewers to discover and interact with your search service.
 4. **Use a IIIF viewer with search capabilities**: Ensure that your IIIF viewer supports the Content Search API and can display search results, highlighting the matching text regions within the images.
+
 ## We would like to implement IIIF but are concerned about copyright, what to do?
+
 Implementing IIIF can raise copyright concerns, as making digital content accessible to a wider audience may involve displaying copyrighted materials. To address these concerns, you can take several steps - organizational and technical - to ensure you are respecting copyright and other intellectual property rights while implementing IIIF:
 
 1. **Understand the copyright status of your content**: Determine the copyright status of the materials you plan to make available via IIIF. This may involve researching the creators, publication dates, and any existing licenses or agreements. Remember that copyright laws and terms can vary by country, so it's essential to be aware of the regulations that apply to your specific location and collections.
@@ -269,7 +275,9 @@ For IIIF Image API and IIIF Presentation API servers, the following CORS headers
 - **Access-Control-Allow-Origin**: This header specifies the domains that are allowed to access the resource. To allow any domain to access the resource, set the header value to *. If you want to restrict access to specific domains, provide a comma-separated list of allowed domain names.
 - **Access-Control-Allow-Methods**: This header lists the HTTP methods (e.g., GET, OPTIONS) that are allowed when accessing the resource. IIIF servers typically support at least the GET and OPTIONS methods.
 - **Access-Control-Allow-Headers**: This header specifies which HTTP headers can be included in the request when accessing the resource. In most cases, this header is not required for IIIF servers, as the IIIF APIs do not rely on custom headers.
+
 # Linked (Open) Data
+
 ## What’s the relationship between IIIF and Linked Data?
 IIIF and Linked Data both aim to promote the accessibility and interoperability of digital resources across various platforms and institutions. While IIIF focuses on providing a standardized framework for delivering, navigating, and manipulating digital images, Linked Data is a more general approach to structuring and connecting information on the web. In fact, IIIF can be seen as an example of Linked Data. Despite their different scopes, IIIF and Linked Data share some common principles and are related in several ways:
 
@@ -277,6 +285,7 @@ IIIF and Linked Data both aim to promote the accessibility and interoperability 
 - **Support for external resources**: IIIF supports linking to external resources, such as semantic metadata, annotation lists, or controlled vocabularies, using properties like "seeAlso" or "within". This allows institutions to maintain and manage their metadata separately from the IIIF manifest while still making it accessible and discoverable in the context of the images. By supporting references to external resources, IIIF encourages the use of shared, web-based resources and facilitates the integration of image collections with other Linked Data initiatives.
 - **Use of shared vocabularies and ontologies**: The Image API and Presentation API as interface define a data structure, which through JSON-LD makes use of shared vocabularies and ontologies. This helps ensure that the information in IIIF manifests can be understood and interpreted by machines and humans alike, and can be easily connected to other Linked Data resources. However, the metadata within a manifest isn’t types, but just given in a label/value style.
 - **Interoperability**: Both IIIF and Linked Data emphasize the importance of interoperability, or the ability of different systems to work together seamlessly. IIIF achieves this through its standardized APIs and data models, while Linked Data leverages shared vocabularies, URIs, and data structures to connect information across different domains.
+
 ## How to add semantic metadata to a IIIF manifest?
 The primary purpose of a IIIF manifest is to describe the structure and presentation of images and their associated resources. It is not designed to store or manage detailed semantic metadata about the content of the images. The focus is on interoperability and ensuring that images can be easily displayed and navigated in a variety of viewing environments. The aim of the label and metadata properties contained in a IIIF manifest is the presentation to end users; not machine processing. The only semantics it contains are language codes.
 
@@ -316,7 +325,7 @@ Referencing a IIIF Manifest in your linked data is usually not applicable, as th
 
 When referencing the Image API it is important to realize that an API is more than an image. You can reference an image, by crafting a specific Image API URL to request the full image. It’s better to inform the client that media is available via the Image API, so specify the URL with which information about the media can be requested (eg. info.json) and the protocol version in which the API is available.
 
-The only two Linked Data schemas with specific guides for referencing IIIF Images are currently the [Europeana Data Model](https://pro.europeana.eu/page/edm-documentation) (EDM) and [Linked Art](https://linked.art/). For EDM, see [Classes for EDM](https://europeana.atlassian.net/wiki/spaces/EF/pages/1141932262/Classes+from+EDM+Profiles); for Linked Art please refer to the IIIF section of [Digital Integration](https://linked.art/model/digital/#iiif). These pages include the preferred methods for linking to IIIF Images and/or manifest. In addition, the following Wikidata property exists for a IIIF Manifest URL: [P6108](https://www.wikidata.org/wiki/Property:P6108).
+The only two Linked Data schemas with specific guides for referencing IIIF Images are currently the [Europeana Data Model](https://pro.europeana.eu/page/edm-documentation) (EDM) and [Linked Art](https://linked.art/). For EDM, see [Classes for EDM](https://europeana.atlassian.net/wiki/spaces/EF/pages/1141932262/Classes+from+EDM+Profiles); for Linked Art please refer to the IIIF section of [Digital Integration](https://linked.art/model/digital/#iiif). These pages include the preferred methods for linking to IIIF Images and/or manifest. In addition, the [Wikidata property P6108](https://www.wikidata.org/wiki/Property:P6108) exists for a IIIF Manifest URL.
 
 For schema.org, the following modeling has been suggested:
 
@@ -382,7 +391,9 @@ For [example](https://linked.art/model/digital/#iiif-manifests):
 }
 ```
 Institutions have used custom solutions to reference IIIF Manifests and Images as part of MODS, METS and MARC standards of the Library of Congress. 
+
 # Software
+
 ## Which viewers can I use once I have implemented IIIF?
 Once you have implemented IIIF, there are several popular IIIF-compatible viewers that you can use to display and interact with your digital images. These viewers support the IIIF Presentation API and Image API, offering a range of features for navigating, zooming, and annotating digital objects. Some widely used IIIF viewers include:
 
@@ -394,6 +405,7 @@ Once you have implemented IIIF, there are several popular IIIF-compatible viewer
 - [**IIIF Curation Viewer**](https://github.com/utokyo-iiif/iiif-curation-viewer): IIIF Curation Viewer is an open-source viewer that supports IIIF Presentation API and allows users to create, edit, and share IIIF manifests. It provides annotation functionality and enables users to curate digital objects from various sources into a single IIIF manifest.
 - [**FromThePage**](https://fromthepage.com/) is a web-based platform for collaborative manuscript transcription, translation, and indexing. While it is not primarily a IIIF viewer like Mirador or Universal Viewer, it does support IIIF integration, allowing users to work with digital images hosted on IIIF servers. FromThePage's main focus is to facilitate the transcription and annotation of historical documents, manuscripts, and other digitized texts by multiple users.
 - [**Allmaps**](https://allmaps.com/) is a web-based platform for creating interactive maps and geospatial applications using various mapping technologies, including IIIF. While Allmaps is not primarily a IIIF viewer like Mirador or Universal Viewer, it supports IIIF integration, allowing users to work with high-resolution images hosted on IIIF servers as map layers.
+
 ## Which tools can I use to edit and enrich manifests?
 If you opt for manually creating manifests and not the preferred pipeline from linked data, there are several manifest editors available, each with varying features and capabilities. Some popular manifest editors include:
 
@@ -401,14 +413,15 @@ If you opt for manually creating manifests and not the preferred pipeline from l
 - [**IIIF Manifest Editor**](https://github.com/digirati-co-uk/iiif-manifest-editor) by Digirati: This open-source manifest editor, developed by Digirati, provides a user-friendly interface for creating and editing IIIF Presentation API manifests. It supports adding canvases, sequences, images, and metadata, and allows users to preview the resulting manifest in a IIIF viewer.
 - [**Simplest IIIF Manifest Editor**](https://ronallo.com/simplest-iiif-manifest-editor/): Developed by Jason Ronallo, this manifest editor focuses on simplicity and ease of use. Users can create, edit, and validate IIIF manifests by filling out form fields, with minimal technical knowledge required.
 
-
 # Implementation
+
 ## How can I create Image API endpoints for my images?
 In most cases, a dynamic server is used to create IIIF Image API endpoints for a collection of images. This server processes the requests and converts the original image into derivatives with the requested parameters such as size, rotation, format and region. Servers can preprocess images by generating [image pyramids](https://en.wikipedia.org/wiki/Pyramid_(image_processing)) and tilesets for different scales, to speed up delivery. The [Image Information](https://iiif.io/api/image/3.0/#5-image-information) response provides, next to basic information about the image, a list of thumbnails and tilesets that have been preprocessed or cached on the server and will thus yield a swift response for clients. In addition it tells clients which operations are supported by the server. The Image Information response is thus generated by the image server.
 
 The IIIF website lists some [compatible server software](https://iiif.io/get-started/image-servers/) in different languages and up-to-date information about pyramidal image formats can be found in the article [Evaluating HTJ2K as a Drop-In Replacement for JPEG2000 with IIIF](https://journal.code4lib.org/articles/17596). Some image servers support different tile layouts such as DeepZoom or Zoomify next to IIIF. 
 
 It’s also possible to generate static tilesets, thumbnails and an Image Information response without the need for a dynamic server. These are sometimes indicated as Level 0 images, referring to the [Image API compliance specification](https://iiif.io/api/image/3.0/compliance/). Many image processing tools can be used to generate static tiles; examples are) [IIIF Tiler](https://github.com/glenrobson/iiif-tiler (Java) or [Sharp](https://sharp.pixelplumbing.com/api-output#tile) (Node.js). For a serverless implementation with higher compliance levels, please refer to [Serverless IIIF](https://samvera.github.io/serverless-iiif/).
+
 ## How can I generate manifests for my images, collections, .. ?
 A IIIF Manifest contains, among other things, descriptive metadata about the image. Usually this metadata is available within your collection (or content) management system. This means a manifest can be made up - pre-processed or dynamically - from already available data, just "reformatted" conforming to the IIIF Presentation API specification.
 
@@ -431,6 +444,7 @@ Creating a IIIF manifest from your heritage metadata involves understanding your
 
 ## Can I offer PDF downloads to users?
 PDFs can be [generated](https://pdiiif.jbaiter.de) on the basis of a IIIF Presentation Manifest.
+
 ## What do I need to ask my supplier in order to implement IIIF?
 When discussing IIIF implementation with a supplier, you will want to ensure that they have the necessary expertise, infrastructure, and capabilities to support the IIIF standards and provide a seamless viewing experience for your digital collections. Here are some key questions to ask your supplier to help you evaluate their IIIF readiness:
 
