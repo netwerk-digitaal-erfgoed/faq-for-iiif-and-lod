@@ -476,17 +476,22 @@ When discussing IIIF implementation with a supplier, you will want to ensure tha
 ## Which suppliers support IIIF?
 The following table shows several Collection Management Systems and image servers and their *self reported* support of IIIF APIs. Specific compliance levels are not stated.
 
-| Software (supplier) | IIIF Presentation API | IIIF Image API |
-|--|--|--|
-| ContentDM (OCLC) | V | V |
-| Memorix (Vitec) | 3 |  2 | 
-| MAIS (DE REE archiefsystemen) | X |  X | 
-| Atlantis (DEVENTit) | ?| ? |
-| Omeka S (open source)| 2/3| 2/3 |
-| Axiell Collections (Axiell) | ? | ? |
-| KLEKSI | ? | ? |
-| IIIP | n/a | 2/3 |
-| Cantaloupe | n/a | 2/3 |
+<table>
+ <thead>
+  <tr><th>Software (supplier)</th><th>IIIF Presentation API</th><th>IIIF Image API</th></tr>
+ </thead>
+ <tbody>
+  <tr><th>Atlantis (DEVENTit)</th><td></td><td></td></tr>
+  <tr><th>Axiell Collections (Axiell)</th><td></td><td></td></tr>
+  <tr><th>Cantaloupe</th><td>n/a</td><td>2/3</td></tr>
+  <tr><th>ContentDM (OCLC)</th><td>V</td><td>V</td></tr>
+  <tr><th>IIIP</th><td>n/a</td><td>2/3</td></tr>
+  <tr><th>MAIS (DE REE archiefsystemen)</th><td></td><td></td></tr>
+  <tr><th>Memorix (Vitec)</th><td>3</td><td>2</td></tr>
+  <tr><th>Omeka S (open source)</th><td>2/3</td><td>2/3</td></tr>
+  <tr><th>KLEKSI</th><td></td><td></td></tr>
+  </tbody>
+</table>
 
 ## How can I test my IIIF manifest?
 Testing your IIIF manifest is an essential step to ensure that it is properly formatted, contains valid data, and works as expected with IIIF-compatible viewers. To test your IIIF manifest, you can use the following tools and methods:
