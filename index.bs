@@ -14,6 +14,7 @@ Abstract: This document lists frequently asked questions about IIIF and Linked (
 # General
 
 ## What is IIIF?
+<img src="iiif-logo.svg" align="right" width="300" hspace="10" vspace="10">
 IIIF stands for **International Image Interoperability Framework** and is pronounced as "triple-eye-eff". The framework was established in 2011 by an international coalition of cultural heritage institutions, led by Stanford University Libraries and supported by the Andrew J. Mellon Foundation. In 2015 the [IIIF Consortium](https://iiif.io/community/consortium/) was formed of 11 institutions including the British Library, La Bibliothèque nationale de France and the Bavarian State Library, which has since increased to 63 members worldwide. Dutch members include Leiden University Libraries and the National Library of the Netherlands. The [IIIF Community](https://iiif.io/community/) actively maintains the standards, shares best practices, and discusses expansions in various groups, committees and at an annual conference.
 
 IIIF has been developed in response to the lack of interoperability between the various interfaces used for the public presentation of digital collections. Institutions have often implemented custom solutions to connect backend to frontend, and have developed their own software for displaying digital objects. Think for example of the different search interfaces and viewers used among cultural heritage institutions. This status quo made it difficult to share codebases, gear user experiences to one another and to promote reuse of digital collections on other (thematic or aggregate) platforms. IIIF addresses this situation by standardizing access to image data (with the [IIIF Image API](https://iiif.io/api/image/3.0/)) and metadata (with the [IIIF Presentation API](https://iiif.io/api/presentation/3.0/)). In this document we’ll be referencing the latest stable versions of both API’s: version 3.0.
@@ -74,6 +75,7 @@ TODO
 Yes, representations which can be included in a IIIF Manifest include IIIF images, audio, and video, as well as non-IIIF 3D and PDF. Beware that viewers might not have the ability to show all representations.
 
 ## What is the structure of a IIIF manifest?
+<img src="iiif-presentation-api-datamodel.png" align="right" style="width:50%;height:auto;">
 A IIIF manifest is a JSON-LD document that describes the structure and metadata of a digital object or collection of objects, such as images, audio, or video. It is based on the IIIF Presentation API and comprises several key components, including pages, canvases, table of contents (ranges), and annotations. Here's an overview of how these components fit together in a typical IIIF manifest:
 - **Manifest**: The manifest is the top-level object that represents the digital resource as a whole. It contains general metadata about the resource (e.g., title, description, rights, etc.) and references to the various components that make up its structure, such as sequences, canvases, and ranges.
 - **Canvas**: A canvas is a virtual space on which digital objects (such as images) are placed. Canvases have dimensions (width and height) and serve as a coordinate system for positioning and scaling digital objects. In the case of a book, for example, each page would typically be represented by a separate canvas, on which the corresponding image is digitally painted.
@@ -83,7 +85,10 @@ A IIIF manifest is a JSON-LD document that describes the structure and metadata 
 
 Here's a simple example of an IIIF manifest in JSON-LD format. This example represents a single-image object with basic metadata and a single canvas using the Presentation API 3.0:
 
-```
+<div class="example">
+Here's a simple example of an IIIF manifest in JSON-LD format. This example represents a single-image object with basic metadata and a single canvas using the Presentation API 3.0:
+
+  <pre highlight=json-ld>
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
   "id": "https://example.org/iiif/manifest/123",
@@ -155,7 +160,8 @@ Here's a simple example of an IIIF manifest in JSON-LD format. This example repr
   "viewingDirection": "left-to-right",
   "behavior": ["paged"]
 }
-```
+  </pre>
+</div>
 
 ## How can I annotate IIIF resources?
 TODO 
@@ -186,9 +192,9 @@ Here is an overview of the main components of a typical info.json file:
   - **sizes**: An optional array of alternative sizes at which the image is available. Each entry includes width and height in pixels.
   - **profile**: An array that includes the compliance level of the IIIF Image API server and an object containing additional features supported by the server. The compliance level is represented as a URI, and the object can include properties such as formats, qualities, and supports to indicate the available image formats, quality levels, and transformation features, respectively.
 
+<div class="example">
 Here's an example of a simple info.json file:
-
-```
+  <pre highlight=json-ld>
 {
   "@context": "http://iiif.io/api/image/2/context.json",
   "@id": "http://example.com/iiif/image/12345",
@@ -210,7 +216,8 @@ Here's an example of a simple info.json file:
     }
   ]
 }
-```
+    </pre>
+</div>
 
 ## Can I use IIIF to offer full-text search?
 Yes, you can use IIIF to offer full-text search for your digital objects. While IIIF itself does not provide a built-in search mechanism, it supports the integration of full-text search through the (IIIF Content Search API][https://iiif.io/api/search/2.0/], which is another API next to the Presentation and Image APIs.
@@ -241,22 +248,28 @@ Machines can discover IIIF manifests through several methods, which often involv
 
 - **Embed manifest link in HTML pages**: When you display a digital object on your website, you can include a link to its corresponding IIIF manifest within the HTML page's head section using the link element. This allows machines to discover the manifest when they visit the object's webpage. Use the `rel="alternate"` attribute with `type="application/ld+json"` type to indicate that the link is an alternate representation of the resource: 
 
-```
+<div class="example">
+  <xmp highlight=html>
 <head>
 <link rel="alternate" type="application/ld+json" href="https://example.org/iiif/manifest/123" />
 </head>
-```
+    </xmp>
+</div>
+
 - **Expose manifest links in sitemaps**: If you have a sitemap for your website, you can include URLs of IIIF manifests in the sitemap. This allows search engines and other machines to discover the manifests when they crawl your website. 
 - **Publish manifests in Linked Data**: If you use Linked Data to describe your digital objects and their relationships, you can include references to IIIF manifests in your RDF statements. This allows machines to discover the manifests when they consume your Linked Data. For example, you can use the dcterms:hasFormat property to link a digital object's URI to its IIIF manifest:
 
-```
+<div class="example">
+  <pre highlight=json-ld>
 {
   "@id": "https://example.org/object/123",
   "http://purl.org/dc/terms/hasFormat": {
     "@id": "https://example.org/iiif/manifest/123"
   }
 }
-```
+    </pre>
+</div>
+
 The section *How to reference IIIF manifests and images in linked data* elaborates on the publishing part.
 - **Register manifests with aggregators and search engines**: You can submit your IIIF manifests to specialized aggregators or search engines that index IIIF resources. Examples include the Digital Public Library of America (DPLA) or Europeana. These platforms can help improve the discoverability of your manifests by making them accessible to a wider audience and increasing their visibility in search results.
 - **Share manifests through APIs or data dumps**: If you provide APIs or data dumps for your digital collections, be sure to include links to the IIIF manifests in the metadata. This allows machines to discover the manifests when they access your APIs or download your data dumps. 
@@ -294,9 +307,9 @@ However, IIIF does support linking to external resources that may contain semant
 
 To reference semantic metadata in a IIIF Manifest, you can add a "seeAlso" property to the appropriate level in the manifest (e.g., manifest, sequence, or canvas), and provide the necessary details, such as the URL of the external resource, its format (using a media type), and an optional label to describe the relationship between the manifest and the external resource.
 
+<div class="example">
 Here's an example of how to include a "seeAlso" property in a IIIF Manifest:
-
-```json
+  <pre highlight=json-ld>
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
   "id": "http://example.org/iiif/book1/manifest",
@@ -315,7 +328,9 @@ Here's an example of how to include a "seeAlso" property in a IIIF Manifest:
   ],
   ...
 }
-```
+    </pre>
+</div>
+
 ## How to reference IIIF Manifests and media in linked data?
 Referencing a IIIF Manifest in your linked data is usually not applicable, as the preferred way to make an IIIF Manifest is to get this from the meta-data in your linked data. Referencing media in your linked data is applicable, because then we’re dealing with the Image API which usually is a separate infrastructure component. 
 
@@ -323,30 +338,37 @@ When referencing the Image API it is important to realize that an API is more th
 
 The only two Linked Data schemas with specific guides for referencing IIIF Images are currently the [Europeana Data Model](https://pro.europeana.eu/page/edm-documentation) (EDM) and [Linked Art](https://linked.art/). For EDM, see [Classes for EDM](https://europeana.atlassian.net/wiki/spaces/EF/pages/1141932262/Classes+from+EDM+Profiles); for Linked Art please refer to the IIIF section of [Digital Integration](https://linked.art/model/digital/#iiif). These pages include the preferred methods for linking to IIIF Images and/or manifest. In addition, the [Wikidata property P6108](https://www.wikidata.org/wiki/Property:P6108) exists for a IIIF Manifest URL.
 
+<div class="example">
 For schema.org, the following modeling has been suggested:
-
-```json
+  <pre highlight=json-ld>
 {
 "@context": "https://schema.org",
 "@type": "ImageObject",
 "contentUrl": "https://maior-images.memorix.nl/sad/iiif/536423ef-c3be-f119-467c-a3a183cff3de/full/max/0/default.jpg",
 "encodingFormat": "https://iiif.io/api/image/"
 }
-```
-The same method can be used to reference a IIIF Manifest (when this is not generated from the linked data).
+    </pre>
+</div>
 
-```json
+For schema.org, the following modeling has been suggested:
+
+<div class="example">
+  <pre highlight=json-ld>
 {
 "@context": "https://schema.org",
 "@type": "ImageObject",
 "contentUrl": "https://athenaeumcollecties.nl/atlassen-en-kaarten/detail/0bbe6ed8-3487-11e6-accc-378756137f8c/media/de918663-c0eb-7bc7-0cbb-b23180fcc623",
 "encodingFormat": "https://iiif.io/api/presentation/"
 }
-```
+    </pre>
+</div>
+
 With Linked.Art yhe IIIF Presentation API is considered to be a `DigitalObject` that is about the object, in the same way as the homepage of the object in a collection information system. The property used to refer to it from the object is, thus, `subject_of`. The `conformsTo` property should also be used with the Presentation API URI, and the Digital Object can also be given a format for JSON-LD.
 
+
+<div class="example">
 For [example](https://linked.art/model/digital/#iiif-manifests):
-```
+  <pre highlight=json-ld>
 {
   "@context": "https://linked.art/ns/v1/linked-art.json",
   "id": "https://linked.art/example/object/34",
@@ -385,7 +407,9 @@ For [example](https://linked.art/model/digital/#iiif-manifests):
     }
   ]
 }
-```
+    </pre>
+</div>
+
 Institutions have used custom solutions to reference IIIF Manifests and Images as part of MODS, METS and MARC standards of the Library of Congress. 
 
 # Software
