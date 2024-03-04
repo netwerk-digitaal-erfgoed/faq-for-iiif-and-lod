@@ -485,7 +485,8 @@ The following table shows several Collection Management Systems and image server
   <tr><th>ContentDM (OCLC)</th><td>V</td><td>V</td></tr>
   <tr><th>IIIP</th><td>n/a</td><td>2/3</td></tr>
   <tr><th>MAIS (DE REE archiefsystemen)</th><td></td><td></td></tr>
-  <tr><th>Memorix (Vitec)</th><td>3</td><td>2</td></tr>
+  <tr><th>Memorix Maior (Vitec)</th><td>3</td><td>2</td></tr>
+  <tr><th>Memorix Nexus (Vitec)</th><td>3</td><td>3</td></tr>
   <tr><th>Omeka S (open source)</th><td>2/3</td><td>2/3</td></tr>
   <tr><th>KLEKSI</th><td></td><td></td></tr>
   </tbody>
