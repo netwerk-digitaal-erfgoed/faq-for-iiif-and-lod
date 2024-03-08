@@ -479,7 +479,7 @@ The following table shows several Collection Management Systems and image server
   <tr><th>Software (supplier)</th><th>IIIF Presentation API</th><th>IIIF Image API</th></tr>
  </thead>
  <tbody>
-  <tr><th>Atlantis (DEVENTit)</th><td></td><td></td></tr>
+  <tr><th>Atlantis (DEVENTit)</th><td>2/3</td><td>2/3</td></tr>
   <tr><th>Axiell Collections (Axiell)</th><td></td><td></td></tr>
   <tr><th>Cantaloupe</th><td>n/a</td><td>2/3</td></tr>
   <tr><th>ContentDM (OCLC)</th><td>V</td><td>V</td></tr>
